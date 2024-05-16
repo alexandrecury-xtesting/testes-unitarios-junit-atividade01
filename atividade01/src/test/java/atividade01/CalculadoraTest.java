@@ -5,19 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class CalculadoraTest {
-
-	@BeforeEach
-	void setUp() throws Exception {
-	}
-	
-	@BeforeAll
-	public static void mount() throws Exception {
-	}
 
 	@Test
 	void testDeveSomarNumerosInteiros() {
@@ -33,12 +23,20 @@ class CalculadoraTest {
 		Calculadora calc = new Calculadora();
 		double expected = 0.3;
 		double result = calc.soma(0.1, 0.2);
-//		assertTrue(result == expected);
+//		System.out.println(result);
+//		assertEquals(expected, result, 0.0001);
+	}
+
+	@Test
+	void testDeveSomarNumerosDecimaisComTruncamento() {
+		Calculadora calc = new Calculadora();
+		double expected = 0.3;
+		double result = calc.soma(0.1, 0.2);
 		assertEquals(expected, result, 0.0001);
 	}
 	
 	@Test
-	void testDeveRetornarNumeroInteiroNaDivisao() {
+	void testDeveDividirNumerosInteiros() {
 		Calculadora calc = new Calculadora();
 		int expected = 3;
 		double result = calc.dividir(6, 2);
@@ -46,7 +44,7 @@ class CalculadoraTest {
 	}
 	
 	@Test
-	void testDeveRetornarNumeroDecimalNaDivisao() {
+	void testDeveDividirNumerosDecimais() {
 		Calculadora calc = new Calculadora();
 		double expected = 3.33;
 		double result = calc.dividir(10, 3);
@@ -59,7 +57,7 @@ class CalculadoraTest {
 			Calculadora calc = new Calculadora();
 			double result = calc.dividir(10, 0);
 		} catch (IllegalArgumentException e) {
-			assertEquals("Não é possível divdir por zero", e.getMessage());
+			assertEquals("O divisor não pode ser zero", e.getMessage());
 		}
 	}
 	
@@ -102,5 +100,4 @@ class CalculadoraTest {
 //		fail("Falhou por motivo de ValidationException");
 		
 	}
-
 }
