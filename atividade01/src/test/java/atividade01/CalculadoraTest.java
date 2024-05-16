@@ -23,8 +23,7 @@ class CalculadoraTest {
 		Calculadora calc = new Calculadora();
 		double expected = 0.3;
 		double result = calc.soma(0.1, 0.2);
-//		System.out.println(result);
-//		assertEquals(expected, result, 0.0001);
+		assertEquals(expected, result);
 	}
 
 	@Test
@@ -32,7 +31,7 @@ class CalculadoraTest {
 		Calculadora calc = new Calculadora();
 		double expected = 0.3;
 		double result = calc.soma(0.1, 0.2);
-		assertEquals(expected, result, 0.0001);
+		assertEquals(expected, result);
 	}
 	
 	@Test
@@ -52,29 +51,13 @@ class CalculadoraTest {
 	}
 	
 	@Test
-	public void testDeveRetornarFalhaAoDividirPorZero() {
-		try {
-			Calculadora calc = new Calculadora();
+	void testDeveRetornarFalhaAoDividirPorZeroa() {
+		Calculadora calc = new Calculadora();
+		IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
 			double result = calc.dividir(10, 0);
-		} catch (IllegalArgumentException e) {
-			assertEquals("O divisor não pode ser zero", e.getMessage());
-		}
+		});
+		assertEquals("O divisor não pode ser zero", exception.getMessage());
 	}
-	
-	
-//	@Test
-//	public void testDeveRetornarFalhaAoDividirPorZero() {
-//		try {
-//		Calculadora calc = new Calculadora();
-//		calc.dividir(10, 0);
-//		fail("Não deveria chegar aqui, algo não mapeado ocorreu.");
-//		} catch (IllegalArgumentException e) {
-//			assertEquals(
-//					"Não é possível divdir por zero", 
-//					e.getMessage()
-//			);
-//		}
-//	}
 
 	@Test
 	public void assertivas() {
@@ -93,10 +76,7 @@ class CalculadoraTest {
 		assertNotSame(s1, s2);
 		
 		assertNull(s3);
-		assertNotNull(s1);
-		
-//		asser
-		
+		assertNotNull(s1);		
 //		fail("Falhou por motivo de ValidationException");
 		
 	}
